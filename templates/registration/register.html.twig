@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% form_theme registrationForm _self %}
+{% block _registration_form_email_row %}
+	<div class="mb-3">
+		<div class="form-floating position-relative">
+			{{ form_widget(form, {
+                attr: {
+                    placeholder: 'Email',
+                    class: 'pe-5 shadow-none'
+                }
+            }) }}
+			{{ form_label(form, 'Email') }}
+			<span class="position-absolute top-50 end-0 translate-middle-y me-3" aria-hidden="true">
+				<i class="bi bi-envelope"></i>
+			</span>
+		</div>
+		{{ form_errors(form) }}
+	</div>
+{% endblock %}
+{% block _registration_form_plainPassword_row %}
+	<div class="mb-3">
+		<div class="form-floating position-relative" data-controller="password-visibility">
+			{{ form_widget(form, {
+                attr: {
+                    placeholder: 'Password',
+                    class: 'pe-5 shadow-none',
+					'data-password-visibility-target': 'input'
+                }
+            }) }}
+			{{ form_label(form, 'Password') }}
+			<span class="position-absolute top-50 end-0 translate-middle-y me-3">
+				<i class="bi bi-eye" data-password-visibility-target="icon" data-action="click->password-visibility#toggle"></i>
+			</span>
+		</div>
+		{{ form_errors(form) }}
+	</div>
+{% endblock %}
+{% block title %}
+	Register
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-3">
+				<div class="mt-3">
+					<h3>
+						Create an account
+					</h3>
+				</div>
+				{{ form_errors(registrationForm) }}
+				{{ form_start(registrationForm) }}
+				{{ form_row(registrationForm.email) }}
+				{{ form_row(registrationForm.plainPassword) }}
+				<div class="d-grid mb-3">
+					<button type="submit" class="btn btn-lg btn-primary">
+						Sign up
+					</button>
+				</div>
+				<div class="text-center text-body-secondary mb-1">
+					<small>Continue with:</small>
+				</div>
+				<div class="d-flex justify-content-center gap-3 mb-3">
+					<a href="{{ path('app_login_google') }}" class="btn btn-outline-secondary flex-fill">
+						<i class="bi bi-google me-1"></i>
+						Google
+					</a>
+					<a href="{{ path('app_login_github') }}" class="btn btn-outline-secondary flex-fill">
+						<i class="bi bi-github me-1"></i>
+						Github
+					</a>
+				</div>
+				<div class="text-center">
+					<small class="text-body-secondary">
+						Already have an account?
+						<a href="{{ path('app_login') }}">
+							Sign in
+						</a>
+					</small>
+				</div>
+				{{ form_end(registrationForm) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

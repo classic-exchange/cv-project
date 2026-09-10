@@ -1,0 +1,24 @@
+hwi_oauth:
+    # https://github.com/hwi/HWIOAuthBundle/blob/master/docs/2-configuring_resource_owners.md
+    resource_owners:
+        google:
+            type:                google
+            client_id:           '%env(GOOGLE_ID)%'
+            client_secret:       '%env(GOOGLE_SECRET)%'
+            scope:               "email profile"
+            options:
+                csrf: true
+
+        github:
+            type:                github
+            client_id:           '%env(GITHUB_ID)%'
+            client_secret:       '%env(GITHUB_SECRET)%'
+            scope:               'user:email'
+            options:
+                csrf: true
+
+    connect:
+        confirmation: false
+        account_connector: App\Security\OAuthConnector
+        registration_form: App\Form\OAuthRegistrationFormType
+        registration_form_handler: App\Security\FormHandler
