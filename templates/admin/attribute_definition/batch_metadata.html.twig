@@ -1,0 +1,2 @@
+{% set edit_url = ea_url().setAction('edit').setEntityId(entity.primaryKeyValue) %}
+<span hidden data-attribute-actions-target="metadata" data-version="{{ entity.instance.version }}" data-built-in="{{ entity.instance.builtIn ? '1' : '0' }}" data-edit-url="{{ edit_url }}"></span>

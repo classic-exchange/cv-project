@@ -7,6 +7,11 @@
         <div class="container-fluid py-3">
             <div class="d-flex justify-content-end align-items-center gap-3">
                 <span>{{ app.user.email }}</span>
+                {% if is_granted('ROLE_RECRUITER') %}
+                    <a href="{{ path('admin') }}" class="btn btn-outline-primary">
+                        Admin panel
+                    </a>
+                {% endif %}
                 <a href="{{ path('app_logout') }}" class="btn btn-outline-danger">
                     Logout
                 </a>

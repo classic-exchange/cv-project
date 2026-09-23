@@ -12,6 +12,7 @@
         "doctrine/doctrine-bundle": "^3.3",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.6",
+        "easycorp/easyadmin-bundle": "*",
         "hwi/oauth-bundle": "^2.5",
         "symfony/apache-pack": "*",
         "symfony/asset": "8.1.*",

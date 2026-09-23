@@ -1,0 +1,13 @@
+{% extends '@EasyAdmin/crud/index.html.twig' %}
+{% block content %}
+    <div data-controller='attribute-actions' data-attribute-actions-delete-action-name-value='deleteSelectedAttributes' data-action='change->attribute-actions#selectionChanged'>
+        {{ parent() }}
+    </div>
+{% endblock %}
+{% block batch_actions %}
+    <a href="#" class="btn btn-secondary" hidden data-attribute-actions-target="editButton" data-action="click->attribute-actions#editSelected">
+        <i class="fa fa-pencil"></i>
+        Edit
+    </a>
+    {{ parent() }}
+{% endblock %}

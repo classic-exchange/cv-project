@@ -53,20 +53,21 @@ security:
             entry_point: form_login
 
     role_hierarchy:
-        ROLE_CANDIDATE: ROLE_USER
-        ROLE_RECRUITER: ROLE_USER
         ROLE_ADMIN: [ROLE_CANDIDATE, ROLE_RECRUITER]
 
     # Note: Only the *first* matching rule is applied
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_RECRUITER }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/register, roles: PUBLIC_ACCESS }
         - { path: ^/oauth, roles: PUBLIC_ACCESS }
         - { path: ^/connect, roles: PUBLIC_ACCESS }
         - { path: ^/home, roles: PUBLIC_ACCESS }
-        - { path: ^/, roles: ROLE_USER }
+        # - { path: ^/, roles: ROLE_CANDIDATE }
+
+    access_decision_manager:
+        strategy: unanimous
 
 when@test:
     security:
