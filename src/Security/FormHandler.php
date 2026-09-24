@@ -12,14 +12,14 @@ use Symfony\Component\HttpFoundation\Request;
 final readonly class FormHandler implements RegistrationFormHandlerInterface
 {
     public function __construct(
-        private readonly UserRepository $userReporitory
+        private readonly UserRepository $userRepository
     ) {}
 
     public function process(Request $request, FormInterface $form, UserResponseInterface $userInformation): bool
     {
         $user = new User();
         $email = $userInformation->getEmail();
-        if ($this->userReporitory->findOneBy(['email' => $email])) {
+        if ($this->userRepository->findOneBy(['email' => $email])) {
             return false;
         }
         $user->setEmail($email);
